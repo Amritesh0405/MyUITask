@@ -1,0 +1,9 @@
+$(document).ready(function(){
+    console.log('herer')
+     $("#button").click(function(){
+        $("#nam").text("Name:"+$("#name").val());
+        $("#id1").text("Email:"+$("#email").val());
+        $("#password").text("Password:"+$("#pwd").val());
+        $("#gender").text(("Gender:"+$("input[name='gender']:checked").val())); 
+       });
+});

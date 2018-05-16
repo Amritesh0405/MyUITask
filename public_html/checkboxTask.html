@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="jquery\checkboxTask.js"></script>
+    </head>
+    <body>
+        <div class ="container">
+            <div style="padding-right: 150px"><input type="button" class='btn btn-info btn-sm pull-right' id='nextPage' value="Next Page" style="margin-left: 15px">
+            </div>
+            <h1 style="text-align: center"><b>Saved Details</b></h1>
+            <div class='mainPage'>
+                <div class="form-group " >
+                    <div class='col-lg-6'>
+                        <div><label for="checkbox" class="control-label ">Interest:</label></div>
+                        <div class="" id="interestCheckbox"></div>
+                    </div>
+                    <div class='col-lg-6'>
+                        <div><label for="checkbox" class="control-label ">Players:</label></div>
+                        <div class="" id="topPlayersCheckbox"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class='nextPage hide'>
+                <div class="form-group " >
+                    <div class='col-lg-6'>
+                        <div><label for="checkbox" class="control-label ">Interest:</label></div>
+                        <div class="" id="nextInterestCheckbox"></div>
+                    </div>
+                    <div class='col-lg-6'>
+                        <div><label for="checkbox" class="control-label ">Players:</label></div>
+                        <div class="" id="nextTopPlayersCheckbox"></div>
+                    </div>
+                </div> 
+            </div>
+            <div class='mainCheckedOptions'>
+                    <h2 id='displaMainOptions'></h2>
+            </div>
+            <div class='nextCheckedOptions hide'>
+                    <h2 id='displaMainOptions'></h2>
+            </div>
+        </div>
+        
+    </body>
+</html>

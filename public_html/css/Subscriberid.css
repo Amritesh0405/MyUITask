@@ -1,0 +1,12 @@
+#th_headingh{
+    background-color: blanchedalmond;
+}
+.container{
+    border:1px solid black;
+    background-color:#edf3f3
+} 
+#display{
+   border:1px solid chocolate;
+   background-color:#f3e9e5;
+   font-size: 18px
+} 

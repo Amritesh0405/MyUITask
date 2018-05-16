@@ -1,0 +1,15 @@
+.wrapper {
+     background-color: pink;
+     border-style: solid;
+     width:50%;
+     border-color: red;
+     border-width: 10px;
+}
+.name {
+     color:blue; 
+}
+#submit {
+    color:springgreen
+}
+
+

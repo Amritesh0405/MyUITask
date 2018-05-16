@@ -1,0 +1,20 @@
+body {
+    font: 12px Arial;
+}
+path {
+    pathstroke: steelblue;
+    /*stroke-width: 2;*/
+    fill: none;
+}
+.axis path, .axis line {
+    fill: red;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+.bar {
+    stroke: steelblue;
+}
+
+
+

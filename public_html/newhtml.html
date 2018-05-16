@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    circle {
+        fill: rgb(31, 119, 180);
+        fill-opacity: .25;
+        stroke: rgb(31, 119, 180);
+        stroke-width: 1px;
+    }
+
+    .leaf circle {
+        fill: #ff7f0e;
+        fill-opacity: 1;
+    }
+
+    text {
+        font: 10px sans-serif;
+        text-anchor: middle;
+    }
+
+</style>
+<div  id = "bubbleChart" style="width:960 ;height:960"></div>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    var svg = d3.select("#bubbleChart").append("svg").attr("width", 960).attr("height", 960),
+            diameter = +svg.attr("width"),
+            g = svg.append("g").attr("transform", "translate(2,2)"),
+            format = d3.format(",d");
+
+    var pack = d3.pack()
+            .size([diameter - 4, diameter - 4]);
+
+
+    var bubbledata = {//BubbleEntity Data
+        name: 'score',
+      
+    }
+    d3.json("data/modi.json", function (error, root) {
+
+        var dataToShow= [];
+        var formattedData = [];
+        root.map(function (v, k) {
+            dataToShow.push({
+                "name": v.word,
+                "size": v.quartile_rank,
+                "score": v.quartile_score
+            });
+        })
+        var nested_data = d3.nest()
+                .key(function (d) {
+                    return d.score;
+                })
+                .entries(dataToShow);
+      nested_data.map(function (v, k) {
+//           
+            formattedData.push({"name": v.key, "children": v.values})
+        })
+      var arr =formattedData.sort(function (a, b) {
+                        return b.value - a.value;
+                    });
+        console.log(arr)
+
+ for(i=0;i<=arr.length-1;i++){
+    
+arr[i+1]?arr[i+1].children.push(arr[i]):"";  
+    
+ }
+console.log(arr[arr.length-1])
+        
+
+  console.log(arr)
+        root = d3.hierarchy(arr[arr.length-1])
+                .sum(function (d) {
+                    return d.size;
+                })
+                .sort(function (a, b) {
+                    return b.value - a.value;
+                });
+
+        var node = g.selectAll(".node")
+                .data(pack(root).descendants())
+                .enter().append("g")
+                .attr("class", function (d) {
+                    return d.children ? "node" : "leaf node";
+                })
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+        node.append("title")
+                .text(function (d) {
+                    return d.data.name + "\n" + format(d.value);
+                });
+
+        node.append("circle")
+                .attr("r", function (d) {
+                    return d.r;
+                });
+
+        node.filter(function (d) {
+            return !d.children;
+        }).append("text")
+                .attr("dy", "0.3em")
+                .text(function (d) {
+                    return d.data.name.substring(0, d.r / 3);
+                });
+
+    })
+</script>
+flare.json#
